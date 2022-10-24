@@ -31,4 +31,4 @@ attr_reader :cards_deck
   def random_card
     cards_deck.sample
   end
-end
+
