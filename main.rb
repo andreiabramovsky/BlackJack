@@ -1,3 +1,3 @@
 require_relative 'logics'
 
-Logics.new
+Logics.new.start
