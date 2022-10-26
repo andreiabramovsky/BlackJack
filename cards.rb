@@ -17,7 +17,6 @@ attr_reader :cards_deck
     generate_deck
   end
 
-  
   # генерация колоды
   def generate_deck
     SUITS.each do |suit|
@@ -32,4 +31,3 @@ attr_reader :cards_deck
   def random_card
     cards_deck.sample
   end
-
