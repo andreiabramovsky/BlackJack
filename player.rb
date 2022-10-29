@@ -1,10 +1,5 @@
 # class Player
 
-# имеет имя, банк денег, руку с картами, количество очков в выданных картах
-# name, bank, hand, points
-
-# может делать ставку, брать карты на руку, считать количество очков, пропускать ход, показывать количество очков, показывать карты на руке
-
 class Player
   attr_reader :points, :hand, :name
   attr_accessor :bank
@@ -18,12 +13,14 @@ class Player
 
   def make_bet(bet)
     @bank -= bet
-    puts "Ваша ставка $#{bet}. Осталось $#{bank}"
+    puts "#{name}, Ваша ставка $#{bet}. Осталось $#{bank}"
+    sleep(2)
   end
 
   def take_card(random_card)
     @hand << random_card
     @points << @hand.last[:score]
+    sleep(1)
   end
 
   def count_points

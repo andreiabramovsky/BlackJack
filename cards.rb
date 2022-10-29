@@ -1,9 +1,5 @@
 # class Cards
 
-# масть, номинал, количество очков
-# генерация колоды
-# выбор случайной карты
-
 class Cards
 
 SUITS = %w[♥ ♦ ♣ ♠].freeze
@@ -17,7 +13,6 @@ attr_reader :cards_deck
     generate_deck
   end
 
-  # генерация колоды
   def generate_deck
     SUITS.each do |suit|
       DENOMINATION.each_with_index do |denomination, index|
@@ -27,7 +22,7 @@ attr_reader :cards_deck
     cards_deck.shuffle
   end
 
-  # случайная карта из сгенерированной колоды
   def random_card
     cards_deck.sample
   end
+end

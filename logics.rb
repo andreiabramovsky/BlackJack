@@ -1,12 +1,5 @@
 # class Logics
 
-# логика игры
-# банк, ставка
-# делаются ставки, раздаются карты
-# затем можно либо взять карту, либо пропустить ход, либо вскрыть карты
-# показать карты, подсчет очков, определение победителя, присуждение выигрыша
-# предложить сыграть еще раз
-
 require_relative 'cards'
 require_relative 'player'
 require_relative 'dealer'
@@ -24,11 +17,15 @@ class Logics
   attr_reader :gambler, :dealer, :cards_deck
 
   def initialize
-    puts "Black Jack"
-    puts "Введите ваше имя"
+    puts "Игра Black Jack"
+    sleep(1)
+    puts "Введите Ваше имя"
     gambler_name = gets.chomp.capitalize
     puts "Здравствуйте, #{gambler_name}. Мы начинаем игру."
+    sleep(1)
+    puts "=============================================="
     puts "У вас в банке $#{BANK}. Ставка равна $#{BET}"
+    sleep(2)
     @gambler = Gambler.new(gambler_name, BANK)
     @dealer = Dealer.new("Дилер", BANK)
     @cards_deck = Cards.new
@@ -100,10 +97,14 @@ class Logics
   def dealer_turn_second
     if dealer.count_points >= 17
       puts 'Дилер пропускает ход'
+      sleep(1)
+      puts
       return_to_player_turn
     else
       take_card(dealer)
       puts 'Дилер взял одну карту.'
+      puts
+      sleep(1)
       return_to_player_turn
     end
   end
@@ -137,7 +138,7 @@ class Logics
       return_bet(gambler)
       dealer_cards_and_points
       puts "Ничья."
-      puts "Ваш банк: $#{gambler.chips}"
+      puts "Ваш банк: $#{gambler.bank}"
     end
   end
 
@@ -167,14 +168,22 @@ class Logics
     loop do
       gambler.make_bet(BET)
       dealer.make_bet(BET)
+      puts
+      puts "Раздача карт"
+      puts
+      sleep(1)
+      puts "Ваши карты:"
       take_card(gambler, 2)
       gambler.show_points
+      sleep(1)
+      puts
+      puts "Карты дилера"
       take_card(dealer, 2)
+      puts
+      sleep(2)
       action
       continue?
   end
-
-  
 
 end
 end
