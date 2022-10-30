@@ -26,10 +26,10 @@ class Player
   def count_points
     count = []
     points.each do |point|
-      # условие второго туза
-      if point == 11 && count.include?(point)
-        count << 1
-      else count << point
+      if count.sum + point > 21 && ( count.include?(11) || point == 11 )
+        count << point - 10
+      else 
+        count << point
       end
     end
     count.sum
